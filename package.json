@@ -1,0 +1,73 @@
+{
+	"name": "php-search",
+	"displayName": "php-search",
+	"description": "Search your doubts or confusions in the PHP manual! Modified from Kamesh Kotwani's Google Search.",
+	"keywords": [
+		"php",
+		"manual",
+		"vscode",
+		"wilson",
+		"helper"
+	],
+	"version": "0.0.1",
+	"publisher": "WilsonWong",
+	"engines": {
+		"vscode": "^1.31.0"
+	},
+	"author": {
+		"name": "Wilson Wong",
+		"url": "https://www.jianshu.com/u/d7a33a4c9649"
+	},
+	"icon": "resources/icon.png",
+	"homepage": "https://www.jianshu.com/u/d7a33a4c9649",
+	"repository": {
+		"type": "git",
+		"url": "https://www.github.com/wish5115/php-manual"
+	},
+	"categories": [
+		"Other"
+	],
+	"activationEvents": [
+		"onCommand:extension.phpManual"
+	],
+	"main": "./extension.js",
+	"contributes": {
+		"menus": {
+			"editor/context": [
+				{
+					"when": "editorHasSelection",
+					"command": "extension.phpManual",
+					"group": "navigation"
+				}
+			]
+		},
+		"commands": [
+			{
+				"command": "extension.phpManual",
+				"title": "PHP Search"
+			}
+		],
+		"configuration": {
+			"title": "php search Config",
+			"type": "object",
+			"properties": {
+				"phpManual.QueryTemplate": {
+					"type": "string",
+					"default": "https://www.php.net/manual-lookup.php?pattern=%SELECTION%",
+					"description": "Input the PHP manual search url"
+				}
+			}
+		}
+	},
+	"scripts": {
+		"postinstall": "node ./node_modules/vscode/bin/install",
+		"test": "node ./node_modules/vscode/bin/test"
+	},
+	"devDependencies": {
+		"typescript": "^3.3.1",
+		"vscode": "^1.1.28",
+		"eslint": "^5.13.0",
+		"@types/node": "^10.12.21",
+		"@types/mocha": "^2.2.42"
+	}
+}
